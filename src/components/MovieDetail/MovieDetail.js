@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import "./MovieDetail.scss";
 import { useParams } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router";
 import {
   fetchAsyncMovieOrShowDetail,
   getSelectedMovieOrShow,
@@ -9,12 +10,14 @@ import {
 } from "../../features/Movies/movieSlice";
 
 const MovieDetail = () => {
+  const history = useHistory();
   const { imdbID } = useParams();
   const dispatch = useDispatch();
   const data = useSelector(getSelectedMovieOrShow); // to get the details from the store
   console.log(data);
   useEffect(() => {
     dispatch(fetchAsyncMovieOrShowDetail(imdbID));
+    
     return () => {
       dispatch(removeSelectedMovieOrShow());
     };

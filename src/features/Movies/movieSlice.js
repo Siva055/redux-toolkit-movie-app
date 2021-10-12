@@ -27,7 +27,7 @@ const initialState = {
     movies:{},
     shows:{},
     selectMovieOrShow:{},
-    // loader:true
+ 
 }
 
 const movieSlice = createSlice({
